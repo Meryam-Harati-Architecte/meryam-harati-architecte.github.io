@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Cabinet d'Architecture Meryam Harati – Temara</title>
+  <meta name="description" content="Cabinet d'architecture à Temara, expertise en conception, permis de construire et suivi de chantier.">
+  <style>
+    /* Palette pilotée par variables CSS — on remplacera ces couleurs après votre image */
+    :root{
+      --bg:#1a1412;           /* arrière-plan global */
+      --text:#1a1412;         /* texte principal */
+      --primary:#f15a0b;      /* couleur marque (header, boutons) */
+      --primary-contrast:#ffffff; /* texte sur primaire */
+      --surface:#f8f6f2;      /* cartes/sections */
+      --surface-muted:#f15a0b15;/* blocs secondaires */
+      --shadow:0 6px 20px rgba(0,0,0,.15);
+      --radius-lg:16px;
+      --radius-md:10px;
+    }
+
+    *{box-sizing:border-box}
+    body{font-family:Inter,Arial,Helvetica,sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.6}
+    header{background:var(--primary);color:var(--primary-contrast);padding:56px 18px;text-align:center}
+    header h1{margin:0 0 8px 0;font-size:32px;letter-spacing:.3px}
+    header p{margin:0;opacity:.95}
+
+    section{max-width:960px;margin:36px auto;background:var(--surface);padding:32px;border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+    h1,h2{color:var(--primary);}
+
+    .services,.portfolio{display:flex;flex-wrap:wrap;gap:18px}
+    .service,.project{flex:1 1 240px;background:var(--surface-muted);padding:18px;border-radius:var(--radius-md)}
+    .project img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:8px}
+
+    .contact{text-align:center}
+    .btn{display:inline-block;background:var(--primary);color:var(--primary-contrast);padding:12px 20px;border:none;border-radius:10px;text-decoration:none;font-size:16px;cursor:pointer;transition:transform .08s ease, filter .2s}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.02)}
+
+    footer{text-align:center;color:#9a9a9a;padding: 24px 0}
+
+    @media (max-width: 720px){
+      section{padding:20px;margin:20px}
+      header h1{font-size:26px}
+      .service,.project{flex:1 1 100%}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Cabinet d'Architecture Meryam Harati</h1>
+  <p>Architecte à Temara - Innovation & Excellence depuis 2014</p>
+</header>
+
+<section>
+  <h2>Nos Services</h2>
+  <div class="services">
+    <div class="service"><b>Plans & Conception</b><br>Maisons, villas, bureaux, commerces.</div>
+    <div class="service"><b>Permis de construire</b><br>Gestion complète de vos dossiers.</div>
+    <div class="service"><b>Suivi de chantier</b><br>De l’idée à la réalisation.</div>
+    <div class="service"><b>Conseil & Rénovation</b><br>Valorisez votre patrimoine.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Réalisations récentes</h2>
+  <div class="portfolio">
+    <div class="project"><img src="https://freeimage.host/i/KH4DiiP" alt="Projet 1"><br>Conception d'une Villa moderne à Temara</div>
+    <div class="project"><img src="https://freeimage.host/i/KH4Zwml" alt="Projet 2"><br>Projet Halle technologique</div>
+    <div class="project"><img src="https://freeimage.host/i/KH4LGjI" alt="Projet 3"><br>Centre des personnes à besoins spécifiques Tendit 2025</div>
+  </div>
+</section>
+
+<section>
+  <h2>À propos</h2>
+  <p>Fondé par architecte Meryam Harati (PhD en Architecture), notre cabinet accompagne particuliers et professionnels pour des projets sur-mesure dans tout le territoire du Maroc.</p>
+  <ul>
+    <li>Expérience depuis 2014</li>
+    <li>Conseil personnalisé</li>
+    <li>Engagement qualité</li>
+  </ul>
+</section>
+
+<section class="contact">
+  <h2>Contact</h2>
+  <p>📍 Temara centre<br>
+    📞 <a href="tel:+212673758768">06 73 75 87 68</a><br>
+    ✉️ <a href="mailto:archimharati@gmail.com">archimharati@gmail.com</a><br>
+    <a href="https://www.instagram.com/meryamharati/" target="_blank">Instagram</a>
+  </p>
+  <a class="btn" href="mailto:archimharati@gmail.com">Demander un rendez-vous</a>
+</section>
+
+<footer style="text-align:center; color:#aaa; padding: 20px 0;">
+  &copy; 2025 Cabinet d'Architecture Meryam Harati – Temara
+</footer>
+</body>
+</html>
