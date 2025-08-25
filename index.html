@@ -3,59 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <title>Cabinet d'Architecture Meryam Harati – Temara</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Cabinet d'architecture à Temara, expertise en conception, permis de construire et suivi de chantier.">
+
+  <!-- UI libs (CDN, gratuits) -->
+  <link rel="stylesheet" href="https://unpkg.com/glightbox/dist/css/glightbox.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
   <style>
     :root{
-      --bg:#1a1412;
-      --text:#1a1412;
-      --primary:#f15a0b;
+      --bg:#1a1412;           /* fond sombre */
+      --text:#1a1412;         /* texte pour surfaces claires */
+      --primary:#f15a0b;      /* orange marque */
       --primary-contrast:#ffffff;
-      --surface:#f8f6f2;
-      --surface-muted:#f15a0b15;
+      --surface:#f8f6f2;      /* cartes/sections claires */
+      --surface-muted:#f15a0b15;/* blocks secondaires */
       --shadow:0 6px 20px rgba(0,0,0,.15);
       --radius-lg:16px;
-      --radius-md:10px;
+      --radius-md:12px;
     }
     *{box-sizing:border-box}
     body{font-family:Inter,Arial,Helvetica,sans-serif;margin:0;background:var(--bg);color:var(--text);line-height:1.6}
 
-    /* Hero section */
-    .hero{
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./images/villa.jpg') center/cover no-repeat;
-      color:#fff;
-      text-align:center;
-      padding:120px 20px;
-    }
-    .hero h1{font-size:42px;margin-bottom:20px;}
-    .hero p{font-size:20px;margin-bottom:30px;}
-    .hero .btn{background:var(--primary);color:#fff;padding:14px 26px;border-radius:8px;text-decoration:none;font-size:18px;}
-    .hero .btn:hover{filter:brightness(1.1)}
-
     header{background:var(--primary);color:var(--primary-contrast);padding:24px 18px;text-align:center}
     header h1{margin:0;font-size:28px;letter-spacing:.3px}
 
-    section{max-width:960px;margin:36px auto;background:var(--surface);padding:32px;border-radius:var(--radius-lg);box-shadow:var(--shadow)}
-    h1,h2{color:var(--primary);}
+    /* Hero */
+    .hero{background:linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)), url('./images/villa.jpg') center/cover no-repeat;color:#fff;text-align:center;padding:120px 20px}
+    .hero h1{font-size:42px;margin:0 0 12px}
+    .hero p{font-size:18px;margin:0 0 24px}
+    .btn{display:inline-block;background:var(--primary);color:#fff;padding:12px 20px;border:none;border-radius:10px;text-decoration:none;font-size:16px;cursor:pointer;transition:transform .08s ease, filter .2s}
+    .btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
 
-    .services,.portfolio{display:flex;flex-wrap:wrap;gap:18px}
-    .service,.project{flex:1 1 240px;background:var(--surface-muted);padding:18px;border-radius:var(--radius-md)}
-    .project img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:8px;transition:transform .35s ease}
-    .project:hover img{transform:scale(1.04)}
-    /* Effet reveal au scroll */
-    .project.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease}
-    .project.reveal.visible{opacity:1;transform:translateY(0)}
-    /* Lightbox minimaliste */
-    .lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:9999;padding:20px}
-    .lightbox-overlay.open{display:flex}
-    .lightbox-content{max-width:90vw;max-height:85vh}
-    .lightbox-content img{max-width:100%;max-height:85vh;border-radius:10px;display:block;margin:0 auto}
-    .lightbox-caption{color:#fff;text-align:center;margin-top:10px;font-size:14px;opacity:.9}
-    .lightbox-close{position:absolute;top:16px;right:16px;background:transparent;border:2px solid #fff;color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer}
-    .lightbox-close:hover{background:#ffffff22}
+    section{max-width:1100px;margin:36px auto;background:var(--surface);padding:32px;border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+    h2{color:var(--primary);margin-top:0}
 
+    /* SERVICES */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .service{background:var(--surface-muted);padding:18px;border-radius:var(--radius-md)}
+
+    /* PROJETS (avec filtres) */
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+    .filter-btn{background:#fff;border:1px solid #ddd;border-radius:999px;padding:8px 14px;cursor:pointer}
+    .filter-btn.active{background:var(--primary);border-color:var(--primary);color:#fff}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .project-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+    .project-card img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s ease}
+    .project-card:hover img{transform:scale(1.04)}
+    .project-body{padding:14px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .tag{background:var(--surface-muted);border-radius:999px;padding:4px 10px;font-size:12px}
+
+    /* GALERIE libre (masonry) */
+    .gallery{column-count:1;column-gap:16px}
+    @media(min-width:700px){ .gallery{column-count:2} }
+    @media(min-width:1024px){ .gallery{column-count:3} }
+    .gallery figure{break-inside:avoid;margin:0 0 16px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+    .gallery img{width:100%;display:block}
+    .gallery .cap{padding:10px 12px;font-size:13px;color:#555}
+    .loadmore{display:block;margin:8px auto 0}
+    .hidden{display:none}
+
+    /* CONTACT */
     .contact{text-align:center}
-    .btn{display:inline-block;background:var(--primary);color:var(--primary-contrast);padding:12px 20px;border:none;border-radius:10px;text-decoration:none;font-size:16px;cursor:pointer;transition:transform .08s ease, filter .2s}
-    .btn:hover{transform:translateY(-1px);filter:brightness(1.02)}
 
     footer{text-align:center;color:#9a9a9a;padding:24px 0}
 
@@ -64,7 +74,6 @@
       .hero p{font-size:16px}
       section{padding:20px;margin:20px}
       header h1{font-size:22px}
-      .service,.project{flex:1 1 100%}
     }
   </style>
 </head>
@@ -74,13 +83,13 @@
   <h1>Cabinet d'Architecture Meryam Harati</h1>
 </header>
 
-<section class="hero">
+<section class="hero" data-aos="fade-up">
   <h1>Innovation & Excellence en Architecture</h1>
-  <p>Depuis 2014, nous créons des espaces uniques et inspirants à Temara et partout au Maroc.<br><a class="btn" href="https://www.google.com/maps/place/Appt+3,+Imm95,+Lotissement+Skikna,+Av+Hassan+II,+Temara" target="_blank">Voir sur la carte</a></p>
+  <p>Depuis 2014, nous créons des espaces uniques et inspirants à Temara et partout au Maroc.</p>
   <a href="#contact" class="btn">Demander un rendez-vous</a>
 </section>
 
-<section>
+<section data-aos="fade-up">
   <h2>Nos Services</h2>
   <div class="services">
     <div class="service"><b>Plans & Conception</b><br>Maisons, villas, bureaux, commerces.</div>
@@ -90,34 +99,74 @@
   </div>
 </section>
 
-<section>
-  <h2>Réalisations récentes</h2>
-  <div class="portfolio">
-    <div class="project reveal"><a href="./images/villa.jpg" class="lightbox" data-caption="Conception d'une Villa moderne à Temara"><img src="./images/villa.jpg" alt="Projet 1"></a><br>Conception d'une Villa moderne à Temara</div>
-    <div class="project reveal"><a href="./images/halle.jpg" class="lightbox" data-caption="Projet Halle technologique"><img src="./images/halle.jpg" alt="Projet 2"></a><br>Projet Halle technologique</div>
-    <div class="project reveal"><a href="./images/centre.png" class="lightbox" data-caption="Centre des personnes à besoins spécifiques Tendit 2025"><img src="./images/centre.png" alt="Projet 3"></a><br>Centre des personnes à besoins spécifiques Tendit 2025</div>
+<!-- PROJETS nommés et filtrables -->
+<section data-aos="fade-up">
+  <h2>Projets</h2>
+  <div class="filters">
+    <button class="filter-btn active" data-group="all">Tous</button>
+    <button class="filter-btn" data-group="villas">Villas</button>
+    <button class="filter-btn" data-group="equipements">Équipements</button>
+    <button class="filter-btn" data-group="renovation">Rénovation</button>
   </div>
-    <div class="project"><img src="./images/halle.jpg" alt="Projet 2"><br>Projet Halle technologique</div>
-    <div class="project"><img src="./images/centre.png" alt="Projet 3"><br>Centre des personnes à besoins spécifiques Tendit 2025</div>
+  <div class="projects-grid" id="projectsGrid">
+    <div class="project-card" data-groups='["villas"]'>
+      <a href="./images/villa.jpg" class="lightbox" data-gallery="projets" data-title="Villa moderne – Temara">
+        <img loading="lazy" src="./images/villa.jpg" alt="Villa moderne – Temara">
+      </a>
+      <div class="project-body">
+        <b>Villa moderne – Temara</b>
+        <div class="tags"><span class="tag">Villas</span><span class="tag">2024</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" data-groups='["equipements"]'>
+      <a href="./images/halle.jpg" class="lightbox" data-gallery="projets" data-title="Halle technologique">
+        <img loading="lazy" src="./images/halle.jpg" alt="Halle technologique">
+      </a>
+      <div class="project-body">
+        <b>Halle technologique</b>
+        <div class="tags"><span class="tag">Équipements</span><span class="tag">2023</span></div>
+      </div>
+    </div>
+
+    <div class="project-card" data-groups='["equipements","renovation"]'>
+      <a href="./images/centre.png" class="lightbox" data-gallery="projets" data-title="Centre Tendit – Accessibilité">
+        <img loading="lazy" src="./images/centre.png" alt="Centre Tendit – Accessibilité">
+      </a>
+      <div class="project-body">
+        <b>Centre Tendit – Accessibilité</b>
+        <div class="tags"><span class="tag">Équipements</span><span class="tag">Rénovation</span></div>
+      </div>
+    </div>
+
+    <!-- Ajoutez ici d'autres projets en dupliquant le pattern ci-dessus -->
   </div>
 </section>
 
-<section>
-  <h2>À propos</h2>
-  <p>Fondé par l’architecte Meryam Harati (PhD en Architecture), notre cabinet accompagne particuliers et professionnels pour des projets sur-mesure dans tout le territoire du Maroc.</p>
-  <ul>
-    <li>Expérience depuis 2014</li>
-    <li>Conseil personnalisé</li>
-    <li>Engagement qualité</li>
-  </ul>
+<!-- GALERIE libre (images non titrées) -->
+<section data-aos="fade-up">
+  <h2>Galerie photos</h2>
+  <div class="gallery" id="gallery">
+    <figure><a href="./images/villa.jpg" class="lightbox" data-gallery="galerie"><img loading="lazy" src="./images/villa.jpg" alt=""/></a></figure>
+    <figure><a href="./images/halle.jpg" class="lightbox" data-gallery="galerie"><img loading="lazy" src="./images/halle.jpg" alt=""/></a></figure>
+    <figure><a href="./images/centre.png" class="lightbox" data-gallery="galerie"><img loading="lazy" src="./images/centre.png" alt=""/></a></figure>
+
+    <!-- éléments cachés (se révèlent avec "Voir plus") -->
+    <figure class="hidden"><a href="./images/villa.jpg" class="lightbox" data-gallery="galerie"><img loading="lazy" src="./images/villa.jpg" alt=""/></a></figure>
+    <figure class="hidden"><a href="./images/halle.jpg" class="lightbox" data-gallery="galerie"><img loading="lazy" src="./images/halle.jpg" alt=""/></a></figure>
+    <figure class="hidden"><a href="./images/centre.png" class="lightbox" data-gallery="galerie"><img loading="lazy" src="./images/centre.png" alt=""/></a></figure>
+  </div>
+  <button class="btn loadmore" id="loadMore">Voir plus</button>
 </section>
 
-<section class="contact" id="contact">
+<section class="contact" id="contact" data-aos="fade-up">
   <h2>Contact</h2>
-  <p>📍 <a href="https://www.google.com/maps/place/Appt+3,+Imm95,+Lotissement+Skikna,+Av+Hassan+II,+Temara" target="_blank">Appt 3, Imm95, Lotissement Skikna Av Hassan II, Temara</a><br>
+  <p>
+    📍 <a href="https://www.google.com/maps/place/Appt+3,+Imm95,+Lotissement+Skikna,+Av+Hassan+II,+Temara" target="_blank">Appt 3, Imm95, Lotissement Skikna Av Hassan II, Temara</a><br>
     📞 <a href="tel:+212673758768">06 73 75 87 68</a><br>
     ✉️ <a href="mailto:archimharati@gmail.com">larchimharati@gmail.com</a><br>
-    <a href="https://instagram.com/votrecompte" target="_blank">Instagram</a>
+    <a href="https://instagram.com/votrecompte" target="_blank">Instagram</a><br>
+    <a class="btn" href="https://www.google.com/maps/place/Appt+3,+Imm95,+Lotissement+Skikna,+Av+Hassan+II,+Temara" target="_blank">Voir sur la carte</a>
   </p>
   <a class="btn" href="mailto:archimharati@gmail.com">Demander un rendez-vous</a>
 </section>
@@ -126,27 +175,48 @@
   &copy; 2025 Cabinet d'Architecture Meryam Harati – Temara
 </footer>
 
-  <!-- Lightbox overlay -->
-
-  </div>
-</div>
-
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<!-- JS libs -->
+<script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/shufflejs@5"></script>
 <script src="https://unpkg.com/glightbox/dist/js/glightbox.min.js"></script>
-<script>
-  // Reveal on scroll (léger)
-  const ob = new IntersectionObserver((entries) => {
-    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); ob.unobserve(e.target); } });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.project.reveal').forEach(el => ob.observe(el));
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-  // Masonry (après chargement des images)
-  window.addEventListener('load', () => {
-    new Masonry('.portfolio', { itemSelector: '.project', percentPosition: true, gutter: 18 });
-  });
+<script>
+  // AOS (animations au scroll)
+  AOS.init({ once:true, offset:80, duration:700 });
 
   // GLightbox
   GLightbox({ selector: 'a.lightbox', touchNavigation: true, loop: true });
+
+  // Shuffle.js pour filtres de PROJETS
+  const grid = document.getElementById('projectsGrid');
+  const Shuffle = window.Shuffle;
+  let shuffler;
+  if (grid){
+    imagesLoaded(grid, function(){
+      shuffler = new Shuffle(grid, { itemSelector: '.project-card', speed: 420 });
+    });
+  }
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const group = btn.getAttribute('data-group');
+      if (group === 'all'){ shuffler.filter(Shuffle.ALL_ITEMS); }
+      else { shuffler.filter(group); }
+    });
+  });
+
+  // Galerie : bouton "Voir plus" (révèle 3 items à chaque clic)
+  const loadBtn = document.getElementById('loadMore');
+  const hiddenEls = Array.from(document.querySelectorAll('#gallery .hidden'));
+  function reveal(n=3){
+    for (let i=0; i<n && hiddenEls.length; i++){
+      hiddenEls.shift().classList.remove('hidden');
+    }
+    if (!hiddenEls.length) loadBtn.style.display='none';
+  }
+  loadBtn.addEventListener('click', ()=> reveal());
 </script>
 
 </body>
